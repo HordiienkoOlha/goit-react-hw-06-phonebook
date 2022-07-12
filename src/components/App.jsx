@@ -7,7 +7,7 @@ export const App = () => {
     <>
       <ContactForm />
 
-      {/* <Filter /> */}
+      <Filter />
       <ContactList />
     </>
   );

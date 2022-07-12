@@ -18,19 +18,17 @@ export const contactSlice = createSlice({
       contacts.items.filter(item => item.id !== payload);
     },
 
-    // filterContact: (state, action) => {
-    //   const newFilter = state.filter.toLowerCase();
-    //   state.filter(
-    //     item =>
-    //       item.name.toLowerCase().includes(newFilter) ||
-    //       item.number.includes(newFilter)
-    //   );
-    // },
+    filterContact: ({ contacts }, { payload }) => {
+      contacts.items.filter(
+        item =>
+          item.name.toLowerCase().includes(payload) ||
+          item.number.includes(payload)
+      );
+    },
   },
 });
 
-export const { addContact, deleteContact } = contactSlice.actions;
-//   export const { addContact, deleteContact, filterContact } =
-//     contactSlice.actions;
+export const { addContact, deleteContact, filterContact } =
+  contactSlice.actions;
 
 export default contactSlice.reducer;
