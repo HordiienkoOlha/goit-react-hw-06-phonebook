@@ -1,30 +1,18 @@
-import PropTypes from 'prop-types';
-import ContactItem from 'components/ContactItem';
+import ContactItem from '../ContactsItem/ContactsItem';
 import { ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = () => {
+  const getContacts = state => state.contacts.contacts.items;
+  const newContacts = useSelector(getContacts);
+
   return (
     <ListGroup>
-      {contacts.map(({ id, name, number }) => (
-        <ContactItem
-          key={id}
-          id={id}
-          name={name}
-          number={number}
-          onDeleteContact={onDeleteContact}
-        />
+      {newContacts.map(({ id, name, number }) => (
+        <ContactItem key={id} name={name} number={number} />
       ))}
     </ListGroup>
   );
 };
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
-};
+
 export default ContactList;
