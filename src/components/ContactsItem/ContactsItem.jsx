@@ -1,11 +1,8 @@
+import PropTypes from 'prop-types';
 import { ListGroup, Button, Stack } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 
-import { deleteContact } from '../../components/redux/contacts/contactSlice';
 
-const ContactItem = ({ id, name, number }) => {
-  const dispatch = useDispatch();
-
+const ContactItem = ({ id, name, number, onDeleteContacts }) => {
   return (
     <ListGroup.Item>
       <Stack direction="horizontal" gap={2}>
@@ -16,13 +13,20 @@ const ContactItem = ({ id, name, number }) => {
           variant="outline-info"
           type="button"
           className="ms-auto"
-          onClick={() => dispatch(deleteContact(id))}
+          onClick={() => onDeleteContacts(id)}
         >
           Delete
         </Button>
       </Stack>
     </ListGroup.Item>
   );
+};
+
+ContactItem.propTypes = {
+//   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContacts: PropTypes.func.isRequired,
 };
 
 export default ContactItem;
