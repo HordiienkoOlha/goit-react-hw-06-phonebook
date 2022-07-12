@@ -13,7 +13,7 @@ const ContactItem = ({ id, name, number, onDeleteContacts }) => {
           variant="outline-info"
           type="button"
           className="ms-auto"
-          onClick={() => onDeleteContacts(id)}
+          onClick={onDeleteContacts}
         >
           Delete
         </Button>

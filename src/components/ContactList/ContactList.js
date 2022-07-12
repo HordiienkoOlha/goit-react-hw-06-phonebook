@@ -9,10 +9,8 @@ const ContactList = () => {
   console.log(newContacts);
   const dispatch = useDispatch();
 
-  const onDeleteContacts = id => {
-    console.log(id);
-    dispatch(deleteContact(id));
-  };
+  const onDeleteContacts = id => dispatch(deleteContact(id));
+
   return (
     <ListGroup>
       {newContacts.map(({ id, name, number }) => (
