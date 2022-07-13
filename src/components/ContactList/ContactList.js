@@ -7,30 +7,30 @@ const ContactList = () => {
   const getContacts = state => state.contacts.contacts.items;
   const getFilter = state => state.contacts.contacts.filter;
   const newContacts = useSelector(getContacts);
-  const newFilter = useSelector(getFilter);
-  const lowerFilter = newFilter.toLowerCase();
-  // console.log(newContacts);
-  console.log(newFilter);
-  console.log(lowerFilter);
+  const filter = useSelector(getFilter);
+  console.log(newContacts);
+
   const dispatch = useDispatch();
 
-  // ;
-  // const filteredContacts = () => {
-  //  const newFilter = filter.toLowerCase();
-  // return dispatch(filterContact(lowerFilter));
-  // return contacts.filter(
-  //   contact =>
-  //     contact.name.toLowerCase().includes(newFilter) ||
-  //     contact.number.includes(newFilter)
-  // );
-  // };
+  const filteredContacts = () => {
+    // const newFilter = filter.toLowerCase();
+    if (filter === '') {
+      return newContacts;
+    }
+    console.log(newContacts);
+    return newContacts.filter(
+      contact =>
+        contact.name.toLowerCase().includes(filter) ||
+        contact.number.includes(filter)
+    );
+  };
 
   const onDeleteContacts = id => dispatch(deleteContact(id));
-  // const filterContacts = filteredContacts();
+  const filterContacts = filteredContacts();
   return (
     <Container className="p-3">
       <ListGroup>
-        {newContacts.map(({ id, name, number }) => (
+        {filterContacts.map(({ id, name, number }) => (
           <ContactItem
             key={id}
             name={name}

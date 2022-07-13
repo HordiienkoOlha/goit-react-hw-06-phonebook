@@ -14,7 +14,9 @@ const Filter = () => {
 
   const onHandlesubmit = event => {
     event.preventDefault();
+
     dispatch(addFilter(filter));
+    
     setFilter('');
   }
 
