@@ -10,13 +10,14 @@ const Filter = () => {
 
   const getFilterValue = event => {
     setFilter(event.target.value);
+    dispatch(addFilter(filter));
   };
 
   const onHandlesubmit = event => {
     event.preventDefault();
 
-    dispatch(addFilter(filter));
-    
+    // dispatch(addFilter(filter));
+
     setFilter('');
   }
 
