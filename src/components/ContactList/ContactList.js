@@ -5,12 +5,28 @@ import { deleteContact } from '../../components/redux/contacts/contactSlice';
 
 const ContactList = () => {
   const getContacts = state => state.contacts.contacts.items;
+  const getFilter = state => state.contacts.contacts.filter;
   const newContacts = useSelector(getContacts);
-  console.log(newContacts);
+  const newFilter = useSelector(getFilter);
+  const lowerFilter = newFilter.toLowerCase();
+  // console.log(newContacts);
+  console.log(newFilter);
+  console.log(lowerFilter);
   const dispatch = useDispatch();
 
-  const onDeleteContacts = id => dispatch(deleteContact(id));
+  // ;
+  // const filteredContacts = () => {
+  //  const newFilter = filter.toLowerCase();
+  // return dispatch(filterContact(lowerFilter));
+  // return contacts.filter(
+  //   contact =>
+  //     contact.name.toLowerCase().includes(newFilter) ||
+  //     contact.number.includes(newFilter)
+  // );
+  // };
 
+  const onDeleteContacts = id => dispatch(deleteContact(id));
+  // const filterContacts = filteredContacts();
   return (
     <Container className="p-3">
       <ListGroup>
