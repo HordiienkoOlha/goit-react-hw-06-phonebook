@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ListGroup, Container } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../../components/redux/contacts/contactSlice';
 import {
@@ -29,7 +29,7 @@ const ContactList = () => {
 
   console.log(filterContacts);
   return (
-    <Container className="p-3">
+    <>
       <ListGroup>
         {filterContacts.map(({ id, name, number }) => (
           <ContactItem
@@ -40,7 +40,7 @@ const ContactList = () => {
           />
         ))}
       </ListGroup>
-    </Container>
+    </>
   );
 };
 
