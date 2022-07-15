@@ -1,4 +1,4 @@
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../../components/redux/contacts/contactSlice';
@@ -9,28 +9,28 @@ import {
 import ContactItem from '../ContactsItem/ContactsItem';
 
 const ContactList = () => {
+  const [filterContacts, setFilterContacts] = useState([]);
   const contacts = useSelector(getContactsItem);
   const filter = useSelector(getContsctasFilter);
-  const lowerCaseFilter = filter.toLowerCase();
 
   const dispatch = useDispatch();
 
-  const onFilteredContacts = () => {
-    return contacts.filter(
+  useEffect(() => {
+    const filteredContacts = contacts.filter(
       contact =>
-        contact.name.toLowerCase().includes(lowerCaseFilter) ||
-        contact.number.includes(lowerCaseFilter)
+        contact.name.toLowerCase().includes(filter) ||
+        contact.number.includes(filter)
     );
-  };
+    return setFilterContacts(filteredContacts);
+  }, [filter, contacts]);
 
   const onDeleteContacts = id => dispatch(deleteContact(id));
-  
-  const filteredContacts = onFilteredContacts();
 
+  console.log(filterContacts);
   return (
     <>
       <ListGroup>
-        {filteredContacts.map(({ id, name, number }) => (
+        {filterContacts.map(({ id, name, number }) => (
           <ContactItem
             key={id}
             name={name}

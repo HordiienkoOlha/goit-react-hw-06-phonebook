@@ -34,13 +34,6 @@ export default function ContactForm() {
     };
 
     dispatch(addContact(newContact));
-
-    reset();
-  };
-
-  const reset = () => {
-    setName('');
-    setNumber('');
   };
 
   return (
