@@ -5,20 +5,18 @@ import { addFilter } from '../redux/contacts/contactSlice';
 
 const Filter = () => {
   const [filter, setFilter] = useState('');
-
   const dispatch = useDispatch();
 
-  const getFilterValue = event => {
+  const onChange = event => {
     setFilter(event.target.value);
-    dispatch(addFilter(filter));
   };
 
   const onHandlesubmit = event => {
     event.preventDefault();
+    dispatch(addFilter(filter));
 
     setFilter('');
-  }
-
+  };
 
   return (
     <>
@@ -28,7 +26,7 @@ const Filter = () => {
           <Form.Control
             type="text"
             placeholder="Search..."
-            onChange={getFilterValue}
+            onChange={onChange}
           />
         </Form.Group>
       </Form>
@@ -37,5 +35,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-// <Filter value={filter} changeFilter={getFilterValue} />

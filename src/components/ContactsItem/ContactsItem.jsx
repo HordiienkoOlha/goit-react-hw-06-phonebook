@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ListGroup, Button, Stack } from 'react-bootstrap';
 
 
-const ContactItem = ({ id, name, number, onDeleteContacts }) => {
+const ContactItem = ({ name, number, onDeleteContacts }) => {
   return (
     <ListGroup.Item>
       <Stack direction="horizontal" gap={2}>

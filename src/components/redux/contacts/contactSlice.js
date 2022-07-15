@@ -16,7 +16,7 @@ export const contactSlice = createSlice({
       contacts.items = contacts.items.filter(item => item.id !== payload);
     },
     addFilter: (contacts, { payload }) => {
-      contacts.filter = payload.toLowerCase();
+      contacts.filter = payload;
     },
   },
 });
