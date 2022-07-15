@@ -25,8 +25,6 @@ const ContactList = () => {
   }, [filter, contacts]);
 
   const onDeleteContacts = id => dispatch(deleteContact(id));
-
-  console.log(filterContacts);
   return (
     <>
       <ListGroup>

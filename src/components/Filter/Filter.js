@@ -8,11 +8,12 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const onChange = event => {
-    setFilter(event.target.value);
+    setFilter(event.target.value.trim());
   };
 
   const onHandlesubmit = event => {
     event.preventDefault();
+    console.log(filter)
     dispatch(addFilter(filter));
 
     setFilter('');
