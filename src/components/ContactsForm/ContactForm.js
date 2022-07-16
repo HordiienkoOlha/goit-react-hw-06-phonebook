@@ -1,12 +1,14 @@
 import { nanoid } from 'nanoid';
 import { Form, Button, Card } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { addContact } from '../redux/contacts/contactSlice';
+import { getContactsItem } from 'redux/contacts/contactsSelectors';
+import { addContact } from 'redux/contacts/contactSlice';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContactsItem);
   const dispatch = useDispatch();
 
   const onChange = event => {
@@ -33,7 +35,11 @@ export default function ContactForm() {
       number,
     };
 
-    dispatch(addContact(newContact));
+    if (contacts.some(contact => contact.name.includes(newContact.name))) {
+      window.alert('The contact added in the list');
+    } else {
+      dispatch(addContact(newContact));
+    }
     reset();
   };
 

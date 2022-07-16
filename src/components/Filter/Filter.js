@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { addFilter } from '../redux/contacts/contactSlice';
+import { addFilter } from 'redux/contacts/contactSlice';
 
 const Filter = () => {
   const [filter, setFilter] = useState('');
@@ -9,12 +9,11 @@ const Filter = () => {
 
   const onChange = event => {
     setFilter(event.target.value.trim());
+    dispatch(addFilter(filter));
   };
 
   const onHandlesubmit = event => {
     event.preventDefault();
-    console.log(filter)
-    dispatch(addFilter(filter));
 
     setFilter('');
   };

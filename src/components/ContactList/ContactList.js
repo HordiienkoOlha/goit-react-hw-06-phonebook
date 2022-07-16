@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../components/redux/contacts/contactSlice';
+import { deleteContact } from 'redux/contacts/contactSlice';
 import {
   getContactsItem,
   getContsctasFilter,
-} from 'components/redux/contacts/contactsSelectors';
+} from 'redux/contacts/contactsSelectors';
 import ContactItem from '../ContactsItem/ContactsItem';
 
 const ContactList = () => {
